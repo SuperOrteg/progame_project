@@ -24,6 +24,9 @@ h3 {
   color: $primary-color;
   font-size: $sizeTitle;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search {
@@ -132,4 +135,9 @@ footer {
 
 .hidden {
   display: none;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
 }

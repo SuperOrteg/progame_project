@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template : './dist/index.html',
+  template : './src/index.html',
   filename : 'index.html',
   inject : 'body'
 })
@@ -30,20 +30,14 @@ const config = {
         ]
       },
       {
-          test: /\.svg$/,
-          oneOf: [
-              {
-                  include: path.resolve(__dirname, '../node_modules/package-name/'),
-                  use: 'svg-inline-loader'
-              },
-              {
-                  exclude: path.resolve(__dirname, '../node_modules/package-name/'),
-                  use: 'url-loader'
-              }
-          ]
+        test: /\.svg$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
       },
       {
-          test: /\.(ttf|eot|woff|woff2|svg)$/,
+          test: /\.(ttf|eot|woff|woff2)$/,
           use: {
               loader: 'file-loader',
               options: {

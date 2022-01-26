@@ -1,16 +1,14 @@
 import "./scss/styles.scss";
-import { routes } from "./js/routes.js";
+import { routes } from "./js/routes";
+import { PageList } from "./js/PageList";
 
-let pageArgument;
-
+const form = document.querySelector('form');
 const searchBar = document.querySelector('input[type="search"]');
 
-searchBar.addEventListener('search', function (event) {
+form.addEventListener('submit', function (event) {
 	event.preventDefault();
 	if (searchBar.value.length > 0) {
-		var queryParams = "/#search/"
-		let newUrl = queryParams.concat(searchBar.value);
-		window.location.href = newUrl
+		PageList(searchBar.value);
 	};
 });
 
