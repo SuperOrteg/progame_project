@@ -30,8 +30,27 @@ const config = {
         ]
       },
       {
-        test: /\.svg$/,
-        use: 'file-loader'
+          test: /\.svg$/,
+          oneOf: [
+              {
+                  include: path.resolve(__dirname, '../node_modules/package-name/'),
+                  use: 'svg-inline-loader'
+              },
+              {
+                  exclude: path.resolve(__dirname, '../node_modules/package-name/'),
+                  use: 'url-loader'
+              }
+          ]
+      },
+      {
+          test: /\.(ttf|eot|woff|woff2|svg)$/,
+          use: {
+              loader: 'file-loader',
+              options: {
+                  name: '[name].[ext]',
+                  outputPath: 'fonts/'
+              },
+          },
       },
       {
         test: /\.png$/,

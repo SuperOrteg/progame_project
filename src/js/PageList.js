@@ -1,18 +1,30 @@
 import { API } from "./api";
 
-const PageList = (argument = '') => {
+const PageList = (argument = "") => {
   const preparePage = () => {
     const cleanedArgument = argument.replace(/\s+/g, "-");
 
     const displayResults = (articles) => {
-      const resultsContent = articles.map((article) => (
-        `<article class="cardGame">
-          <h1>${article.name}</h1>
-          <h2>${article.released}</h2>
-          <a href="#game/${article.id}">${article.id}</a>
-        </article>`
-      ));
-      const resultsContainer = document.querySelector(".page-list .articles");
+      const resultsContentFirst = articles.slice(0, 9).map(
+        (article) =>
+          `<article class="cardGame col-4">
+        <a href="#game/${article.id}">
+          <img class="cardGameImg" src="${article.background_image}"></a>
+            <h3 class="mt-2">${article.name}</h3>
+      </article>`
+      );
+      const resultsContainerFirst = document.querySelector(".page-list .articlesFirst");
+      resultsContainerFirst.innerHTML = resultsContentFirst.join("\n");
+
+      const resultsContent = articles.slice(9, 18).map(
+        (article) =>
+          `<article class="cardGame col-4">
+        <a href="#game/${article.id}">
+          <img class="cardGameImg" src="${article.background_image}"></a>
+            <h3 class="mt-2">${article.name}</h3>
+      </article>`
+      );
+      const resultsContainer = document.querySelector(".page-list .articlesSecond");
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
 
@@ -21,7 +33,7 @@ const PageList = (argument = '') => {
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
-          displayResults(responseData.results)
+          displayResults(responseData.results);
         });
     };
 
@@ -31,9 +43,30 @@ const PageList = (argument = '') => {
   const render = () => {
     pageContent.innerHTML = `
       <section class="page-list">
-        <div class="articles">...loading</div>
+        <select class="platformSelect mb-4 mt-2">
+          <option selected>Platform : any</option>
+          <option>PlayStation</option>
+          <option>XBox</option>
+          <option>Switch</option>
+          <option>PC</option>
+          <option>Linux</option>
+          <option>Mobile</option>
+        </select>
+        <div class="articlesFirst row">...loading</div>
+        <div class="showMore">
+        <div class="nextBtn" id="nextBtn">Show more</div>
+        </div>
+        <div class="articlesSecond row hidden" id="articlesSecond"></div>
       </section>
     `;
+
+    const nextBtn = document.getElementById('nextBtn')
+
+    nextBtn.addEventListener('click', function() {
+      document.getElementById('articlesSecond').classList.remove("hidden");
+      document.getElementsByClassName('showMore')[0].classList.remove("showMore");
+      nextBtn.style.display = "none";
+    })
 
     preparePage();
   };
@@ -41,4 +74,4 @@ const PageList = (argument = '') => {
   render();
 };
 
-export {PageList};
+export { PageList };

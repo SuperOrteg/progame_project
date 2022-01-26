@@ -2,8 +2,134 @@
 
 $primary-color: white;
 $bg: black;
+$header: #D20A32;
+
+$sizeFont: 16px;
+$sizeHeader: 48px;
+$sizeTitle: 24px;
+
+body {
+  background-color: $bg;
+  font-size: $sizeFont;
+  letter-spacing: 0.5px;
+}
 
 h1 {
   color: $primary-color;
-  background-color: $bg;
+  font-size: $sizeHeader;
+  font-weight: bold;
+}
+
+h3 {
+  color: $primary-color;
+  font-size: $sizeTitle;
+  font-weight: bold;
+}
+
+.search {
+  position: relative;
+  border: 1px solid $primary-color;
+  height: 40px;
+  background: $bg;
+  width: 280px;
+  border-radius: 50px;
+  padding-left: 45px;
+  padding-right: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: $sizeFont;
+  color: #555;
+  &:focus {
+    outline: none;
+  }
+}
+
+.header {
+  text-decoration: none;
+  position: relative;
+  color: $header;
+  font-size: $sizeHeader;
+  font-weight: bold;
+  
+  &:after {
+    content: '';
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    background: $header;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    color: $header;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+  
+  &.block {
+    display: block;
+    padding: 0.5em;
+  }
+}
+
+.platformSelect {
+  background-color: $header;
+  color: white;
+  padding: 5px 40px 5px 20px;
+  border: none;
+  font-size: 22px;
+  font-weight: light;
+};
+
+.cardGame {
+  height: 300px;
+  width: 27vw;
+}
+
+.cardGameImg {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.redLine {
+  height: 10px;
+  width: 139px;
+  border: 1px solid black;
+  clear: both;
+  background-color: $header;
+  margin-bottom: 20px;
+}
+
+.showMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+footer {
+  margin-top: 80px;
+}
+
+.nextBtn {
+  height: 50px;
+  width: 225px;
+  border: 1px solid black;
+  clear: both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $header;
+  color: $primary-color;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

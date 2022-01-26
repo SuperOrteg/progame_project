@@ -20,7 +20,7 @@ const PageDetail = (argument) => {
         });
     };
 
-    fetchGame('https://api.rawg.io/api/games', cleanedArgument);
+    fetchGame("https://api.rawg.io/api/games", cleanedArgument);
   };
 
   const render = () => {
@@ -40,4 +40,4 @@ const PageDetail = (argument) => {
   render();
 };
 
-export {PageDetail};
+export { PageDetail };
