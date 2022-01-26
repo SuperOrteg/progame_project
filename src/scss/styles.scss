@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 $primary-color: white;
-$bg: black;
+$bg: #191919;
 $header: #D20A32;
 
 $sizeFont: 16px;
@@ -95,8 +95,40 @@ h3 {
 
 .cardGameImg {
   width: 100%;
-  height: 70%;
+  height: 100%;
   object-fit: cover;
+}
+
+.img__wrap {
+  position: relative;
+  height: 210px;
+  width: 25vw;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+  background: $bg;
+  color: $primary-color;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 18px;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tag {
+  font-size: 12px;
 }
 
 .redLine {
@@ -140,4 +172,5 @@ footer {
 .icon {
   height: 24px;
   width: 24px;
+  margin-right: 10px;
 }

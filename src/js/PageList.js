@@ -1,4 +1,6 @@
 import { API } from "./api";
+import dayjs from 'dayjs';
+import { platformsIcons } from "./others/icons";
 
 const PageList = (argument = "") => {
   const preparePage = () => {
@@ -7,10 +9,20 @@ const PageList = (argument = "") => {
     const displayResults = (articles) => {
       const resultsContentFirst = articles.slice(0, 9).map(
         (article) =>
-          `<article class="cardGame col-4">
+          `<article class="cardGame col-4 mb-3">
         <a href="#game/${article.id}">
-          <img class="cardGameImg" src="${article.background_image}"></a>
-            <h3 class="mt-2">${article.name}</h3>
+        <div class="img__wrap">
+          <img class="cardGameImg" src="${article.background_image}">
+          <div class="img__description">
+          <p>${dayjs(article.released).format('MMM DD, YYYY')}</p>
+          <p>${article.rating}/5 - ${article.ratings_count} votes</p>
+          <p class="tag">${article.tags.slice(0, 9).map(tag => tag.name).join(", ")}</p>
+          </div></a>
+        </div>
+            <h3 class="mt-3 mb-2">${article.name}</h3>
+            <div>
+            ${platformsIcons(article.platforms)}
+            </div>
       </article>`
       );
       const resultsContainerFirst = document.querySelector(".page-list .articlesFirst");
@@ -20,8 +32,18 @@ const PageList = (argument = "") => {
         (article) =>
           `<article class="cardGame col-4">
         <a href="#game/${article.id}">
-          <img class="cardGameImg" src="${article.background_image}"></a>
+        <div class="img__wrap">
+          <img class="cardGameImg" src="${article.background_image}">
+          <div class="img__description">
+          <p>${dayjs(article.released).format('MMM DD, YYYY')}</p>
+          <p>${article.rating}/5 - ${article.ratings_count} votes</p>
+          <p class="tag">${article.tags.slice(0, 9).map(tag => tag.name).join(", ")}</p>
+          </div></a>
+        </div>
             <h3 class="mt-2">${article.name}</h3>
+            <div>
+            ${platformsIcons(article.platforms)}
+            </div>
       </article>`
       );
       const resultsContainer = document.querySelector(".page-list .articlesSecond");
