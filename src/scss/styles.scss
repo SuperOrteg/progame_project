@@ -33,7 +33,7 @@ h3 {
   position: relative;
   border: 1px solid $primary-color;
   height: 40px;
-  background: $bg;
+  background: transparent;
   width: 280px;
   border-radius: 50px;
   padding-left: 45px;
@@ -44,6 +44,7 @@ h3 {
   color: #555;
   &:focus {
     outline: none;
+    color: $primary-color;
   }
 }
 
@@ -173,4 +174,8 @@ footer {
   height: 24px;
   width: 24px;
   margin-right: 10px;
+}
+
+#searchIcon {
+  margin-right: -40px;
 }

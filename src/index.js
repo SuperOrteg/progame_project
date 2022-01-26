@@ -1,6 +1,9 @@
 import "./scss/styles.scss";
 import { routes } from "./js/routes";
 import { PageList } from "./js/PageList";
+import Search from "./images/search.svg";
+
+document.querySelector('#searchIcon').src = `${Search}`;
 
 const form = document.querySelector('form');
 const searchBar = document.querySelector('input[type="search"]');
