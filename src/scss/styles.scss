@@ -12,11 +12,18 @@ body {
   background-color: $bg;
   font-size: $sizeFont;
   letter-spacing: 0.5px;
+  color: $primary-color;
 }
 
 h1 {
   color: $primary-color;
   font-size: $sizeHeader;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 36px;
+  color: $header;
   font-weight: bold;
 }
 
@@ -178,4 +185,101 @@ footer {
 
 #searchIcon {
   margin-right: -40px;
+}
+
+.background {
+  position: relative;
+  width: 100vw;
+  height: 65vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 5vh;
+}
+
+#websiteBtn {
+  position: absolute;
+  text-decoration: none;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 4%;
+  margin-right: 12%;
+  background-color: $header;
+  color: white;
+  padding: 10px 10px 10px 20px;
+  border: none;
+  font-size: 22px;
+  font-weight: light;
+};
+
+.play {
+  margin-left: 60px;
+}
+
+.titleGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  color: $header;
+  font-size: $sizeTitle;
+  font-weight: bold;
+  margin-right: 4%;
+}
+
+.info {
+  margin-bottom: 0;
+}
+
+.buy {
+  margin-top: 60px;
+}
+
+.storeLinks {
+  text-decoration: none;
+  position: relative;
+  color: $primary-color;
+  padding-bottom: 3px;
+  line-height: 2.5;
+  
+  &:after {
+    content: '';
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    background: $header;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+  
+  &.block {
+    display: block;
+    padding: 0.5em;
+  }
+}
+
+.screen {
+  padding-right: 2vw;
+  padding-left: 2vw;
+}
+
+.screenImg {
+  height: 100%;
+  width: 100%;
+};
+
+video {
+  width: 40vwv !important;
+  height: 555px;
 }
