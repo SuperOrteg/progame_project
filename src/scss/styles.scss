@@ -61,6 +61,7 @@ h3 {
   color: $header;
   font-size: $sizeHeader;
   font-weight: bold;
+  padding-bottom: 5px;
   
   &:after {
     content: '';
