@@ -1,5 +1,5 @@
 import { API } from "./api";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { platformsIcons } from "./others/icons";
 
 const PageList = (argument = "") => {
@@ -14,9 +14,12 @@ const PageList = (argument = "") => {
         <div class="img__wrap">
           <img class="cardGameImg" src="${article.background_image}">
           <div class="img__description">
-          <p>${dayjs(article.released).format('MMM DD, YYYY')}</p>
+          <p>${dayjs(article.released).format("MMM DD, YYYY")}</p>
           <p>${article.rating}/5 - ${article.ratings_count} votes</p>
-          <p class="tag">${article.tags.slice(0, 9).map(tag => tag.name).join(", ")}</p>
+          <p class="tag">${article.tags
+            .slice(0, 9)
+            .map((tag) => tag.name)
+            .join(", ")}</p>
           </div></a>
         </div>
             <h3 class="mt-3 mb-2">${article.name}</h3>
@@ -25,7 +28,9 @@ const PageList = (argument = "") => {
             </div>
       </article>`
       );
-      const resultsContainerFirst = document.querySelector(".page-list .articlesFirst");
+      const resultsContainerFirst = document.querySelector(
+        ".page-list .articlesFirst"
+      );
       resultsContainerFirst.innerHTML = resultsContentFirst.join("\n");
 
       const resultsContent = articles.slice(9, 18).map(
@@ -35,9 +40,12 @@ const PageList = (argument = "") => {
         <div class="img__wrap">
           <img class="cardGameImg" src="${article.background_image}">
           <div class="img__description">
-          <p>${dayjs(article.released).format('MMM DD, YYYY')}</p>
+          <p>${dayjs(article.released).format("MMM DD, YYYY")}</p>
           <p>${article.rating}/5 - ${article.ratings_count} votes</p>
-          <p class="tag">${article.tags.slice(0, 9).map(tag => tag.name).join(", ")}</p>
+          <p class="tag">${article.tags
+            .slice(0, 9)
+            .map((tag) => tag.name)
+            .join(", ")}</p>
           </div></a>
         </div>
             <h3 class="mt-2">${article.name}</h3>
@@ -46,13 +54,15 @@ const PageList = (argument = "") => {
             </div>
       </article>`
       );
-      const resultsContainer = document.querySelector(".page-list .articlesSecond");
+      const resultsContainer = document.querySelector(
+        ".page-list .articlesSecond"
+      );
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
 
     const returnStudios = (list) => {
-      let studios = list.map(pub => `${pub.name}`);
-      return studios.join(', ');
+      let studios = list.map((pub) => `${pub.name}`);
+      return studios.join(", ");
     };
 
     const fetchStudios = (argument) => {
@@ -100,13 +110,15 @@ const PageList = (argument = "") => {
       </section>
     `;
 
-    const nextBtn = document.getElementById('nextBtn')
+    const nextBtn = document.getElementById("nextBtn");
 
-    nextBtn.addEventListener('click', function() {
-      document.getElementById('articlesSecond').classList.remove("hidden");
-      document.getElementsByClassName('showMore')[0].classList.remove("showMore");
+    nextBtn.addEventListener("click", function () {
+      document.getElementById("articlesSecond").classList.remove("hidden");
+      document
+        .getElementsByClassName("showMore")[0]
+        .classList.remove("showMore");
       nextBtn.style.display = "none";
-    })
+    });
 
     preparePage();
   };

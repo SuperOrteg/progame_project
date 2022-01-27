@@ -3,24 +3,24 @@ import { routes } from "./js/routes";
 import { PageList } from "./js/PageList";
 import Search from "./images/search.svg";
 
-document.querySelector('#searchIcon').src = `${Search}`;
+document.querySelector("#searchIcon").src = `${Search}`;
 
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 const searchBar = document.querySelector('input[type="search"]');
 
-form.addEventListener('submit', function (event) {
-	event.preventDefault();
-	if (searchBar.value.length > 0) {
-		PageList(searchBar.value);
-	};
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (searchBar.value.length > 0) {
+    PageList(searchBar.value);
+  }
 });
 
 const callRoute = () => {
   const { hash } = window.location;
-  const pathParts = hash.substring(1).split('/');
+  const pathParts = hash.substring(1).split("/");
 
   const pageName = pathParts[0];
-  const pageArgument = pathParts[1] || '';
+  const pageArgument = pathParts[1] || "";
   const pageFunction = routes[pageName];
 
   if (pageFunction !== undefined) {
@@ -28,5 +28,5 @@ const callRoute = () => {
   }
 };
 
-window.addEventListener('hashchange', () => callRoute());
-window.addEventListener('DOMContentLoaded', () => callRoute());
+window.addEventListener("hashchange", () => callRoute());
+window.addEventListener("DOMContentLoaded", () => callRoute());
